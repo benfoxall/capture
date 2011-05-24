@@ -1,0 +1,33 @@
+!!! 5
+%html
+	%head
+		%title Captures
+		:css
+			body{font-family:helvetica,sans-serif;background-color:#f5f5f5;padding:3em;}
+			h1{color:#888;margin:0;}
+			h1.inactive{color:#bbb;text-decoration: line-through;}
+			h1 em{color:#bbb;font-size:.5em;font-weight:normal;}
+			ul{margin:0;margin:0 0 1em 0px;padding:0;}
+			ul:before{content:'>';color:#888;}
+			li{list-style:none;display:inline;}
+			a{color:#08f;text-decoration:underline;padding:.25em;}
+			hr{margin-top:5em;border:none;border-bottom:1px solid #ccc;}
+			h2{color:#888;font-weight:normal;}
+			code{background-color:#fff;padding:.5em;}
+	%body
+
+		- @list.each_with_index do |item,i|
+
+			%h1{:class => item[2] ? '' : 'inactive'} #{item[0]} <em>#{item[1] || '0'} samples</em>
+			
+			%ul
+				/
+					%li
+						%a(href="/100/#{i}.csv") last 100
+				%li
+					%a(href="/#{i}.txt") Download
+
+		%hr
+
+		%h2 Format:
+		%code Timestamp tweet_count timespan(seconds)</code>
