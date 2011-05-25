@@ -1,0 +1,24 @@
+This is a quick app to estimate the current frequency of tweets about a particular subject
+
+It searches twitter for a term and stores:
+   a) the current time
+   b) the number of tweets returned (limted to 25)
+   c) the time spanned by these tweets
+
+... which lets you work out a rough idea of how frequently it is being mentioned
+
+Config:
+   - httparty & sinatra gems 
+   - list your terms in _terms.txt (term logs are named based on line numbers, so be sure to append, not edit, this file)
+
+There are two parts to the app:
+
+1. Capture
+
+ruby capture.rb
+   - this will search twitter for the terms in the _terms.txt file.
+
+2. Server
+
+ruby server.rb
+   - this launches a sintra app which lists the terms, the number of times they have been queried and gives a link to the relevant log file
